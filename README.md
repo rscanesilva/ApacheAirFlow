@@ -35,9 +35,9 @@ organized in a way that reflects their relationships and dependencies.
 
 #### Zombies/Undeads, Cluster Policies, Jinja Templating and Packaged DAGs
 - **Zombies/Undeads:** This feature is used in Airflow to check if a task is stagnant; if so, it ends the task.
-- **CLuster Policies: ** It's a group where you define own policies such as access restrictions and so on.
-- **Jinja Templating: ** Jinja Templating is a Python feature that allows dynamic scripts, such as scriptlet in java, which we can also combine with macros
-- **Packaged DAGs: ** Used from combine some DAGs in a zip
+- **CLuster Policies:** It's a group where you define own policies such as access restrictions and so on.
+- **Jinja Templating:** Jinja Templating is a Python feature that allows dynamic scripts, such as scriptlet in java, which we can also combine with macros
+- **Packaged DAGs:** Used from combine some DAGs in a zip
 
 #### Backfill
  It's great when you need to change the business logic of the existing DAG and need to update the historical data
@@ -45,11 +45,11 @@ organized in a way that reflects their relationships and dependencies.
 ### Operators
 While Dag describe how executing a workflow, operators determine waht really should be performed.
 #### Commons Operators
-- **BashOperator: ** executing a command bash
-- **PythonOperator: ** call a Python function
-- **EmailOperator: ** send a e-mail
-- **SimpleHttpOperator: ** send HTTP request
+- **BashOperator:** executing a command bash
+- **PythonOperator:** call a Python function
+- **EmailOperator:** send a e-mail
+- **SimpleHttpOperator:** send HTTP request
 - **MySQLOperator, JDBCOperator,PostgresOperator, MsSqlOperator, OracleOperator, etc.** Execute SQL command.
-- **Sensor: ** Used to determine a waiting time to validate the progress of a given task.
+- **Sensor:** Used to determine a waiting time to validate the progress of a given task.
 
 > For more operators, access https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/index.html
