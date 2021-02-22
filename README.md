@@ -1,5 +1,5 @@
 ## Annotations about Apache Airflow 
-
+---
 ### Concepts and Resources
 
 #### DAG ( Direct Acyclic Graph )
@@ -53,3 +53,14 @@ While Dag describe how executing a workflow, operators determine waht really sho
 - **Sensor:** Used to determine a waiting time to validate the progress of a given task.
 
 > For more operators, access https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/index.html
+
+
+## How to Setup Airflow Multi-Node Cluster with Celery & RabbitMQ
+---
+
+For using more than one work node from Airflow, we should set up the executor in airflow.cfg to use CeleryExecutor and all node must have installed the Airflow.
+
+* http://airflow.apache.org/docs/apache-airflow/stable/executor/celery.html?highlight=celery
+* https://medium.com/@khatri_chetan/how-to-setup-airflow-multi-node-cluster-with-celery-rabbitmq-cfde7756bb6a
+
+
