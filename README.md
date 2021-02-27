@@ -64,6 +64,7 @@ For using more than one work node from Airflow, we should set up the executor in
 * https://medium.com/bluecore-engineering/were-all-using-airflow-wrong-and-how-to-fix-it-a56f14cb0753
 * http://airflow.apache.org/docs/apache-airflow/stable/executor/celery.html?highlight=celery
 * https://medium.com/@khatri_chetan/how-to-setup-airflow-multi-node-cluster-with-celery-rabbitmq-cfde7756bb6a
+* http://site.clairvoyantsoft.com/making-apache-airflow-highly-available/
 
 
 
