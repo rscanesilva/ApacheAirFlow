@@ -66,6 +66,5 @@ For using more than one work node from Airflow, we should set up the executor in
 * https://medium.com/@khatri_chetan/how-to-setup-airflow-multi-node-cluster-with-celery-rabbitmq-cfde7756bb6a
 * http://site.clairvoyantsoft.com/making-apache-airflow-highly-available/
 * https://docs.bitnami.com/tutorials/deploy-apache-airflow-kubernetes-helm/
-
-
+* 
 
