@@ -1,0 +1,19 @@
+{
+    "name": "pubsub-dag-trigger-funcion",
+    "version": "0.0.1",
+    "dependencies": {
+      "form-data": "^4.0.0",
+      "node-fetch": "^2.2.0"
+    },
+    "engines": {
+      "node": ">=8.0.0"
+    },
+    "devDependencies": {
+      "mocha": "^8.0.0",
+      "proxyquire": "^2.1.0",
+      "sinon": "^9.0.0"
+    },
+    "scripts": {
+      "test": "mocha test/*.test.js --timeout=20000"
+    }
+  }
