@@ -6,22 +6,23 @@ from airflow.contrib.operators import kubernetes_pod_operator
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
 from airflow.operators.python_operator import BranchPythonOperator
 from airflow.hooks.mysql_hook import MySqlHook
+import re
 
 default_dag_args = {
     'start_date': datetime(2021, 3, 12),
     'owner': 'ARQT-REFE'
 }
 
-def validate_exec_date_function(connid, holidayTask, businessTask):
-    mysql_hook: MySqlHook = MySqlHook(mysql_conn_id=connid)
+def validate_exec_date_function(**kwargs):
+    mysql_hook: MySqlHook = MySqlHook(mysql_conn_id=kwargs['conn_id'])
     returned = mysql_hook.get_records(sql="SELECT count(date) FROM holiday where date=Date(now())")
     countReturned = int(re.sub("[^0-9]", "", str(returned[0])))
     
     print(countReturned)
     if countReturned > 0:
-        return holidayTask
+        return kwargs['holidayTask']
     else:
-        return businessTask
+        return kwargs['businessTask']
 
 
 with models.DAG(
@@ -31,7 +32,12 @@ with models.DAG(
     
     validate_exec_date = BranchPythonOperator(
         task_id='validate_exec_date',
-        python_callable=validate_exec_date_function('mysql_calendar', 'holiday', 'task_one'),
+        python_callable=validate_exec_date_function,
+        op_kwargs={
+            'conn_id': 'mysql_calendar', 
+            'holidayTask': 'holiday',
+            'businessTask':'task_one'
+        },
         provide_context=True
     )
 
