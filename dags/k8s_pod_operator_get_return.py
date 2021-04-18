@@ -30,7 +30,7 @@ with models.DAG(
         task_id='pod-grid',
         name='pod-grid',
         namespace='default',
-        image='rodriguesflavio/poc-pubsub-ok4')
+        image='rodriguesflavio/flavio-poc')
     
     
     

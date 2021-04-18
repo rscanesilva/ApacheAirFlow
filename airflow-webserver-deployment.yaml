@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: airflow-webserver
+  name: airflow-webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: airflow-webserver
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: airflow-webserver
+    spec:
+      containers:
+      - args:
+        - webserver
+        env:
+        - name: AIRFLOW__CELERY__BROKER_URL
+          value: redis://:@redis:6379/0
+        - name: AIRFLOW__CELERY__RESULT_BACKEND
+          value: db+postgresql://airflow:airflow@postgres/airflow
+        - name: AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION
+          value: "true"
+        - name: AIRFLOW__CORE__EXECUTOR
+          value: CeleryExecutor
+        - name: AIRFLOW__CORE__FERNET_KEY
+        - name: AIRFLOW__CORE__LOAD_EXAMPLES
+          value: "true"
+        - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
+          value: postgresql+psycopg2://airflow:airflow@postgres/airflow
+        image: apache/airflow:2.0.1
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            httpHeaders:
+            - name: Custom-Header
+              value: Awesome
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        name: airflow-webserver
+        ports:
+        - containerPort: 8080
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

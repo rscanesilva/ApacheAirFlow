@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: airflow-webserver
+  name: airflow-webserver
+spec:
+  ports:
+  - name: "7001"
+    port: 7001
+    targetPort: 8080
+  selector:
+    io.kompose.service: airflow-webserver
+status:
+  loadBalancer: {}
