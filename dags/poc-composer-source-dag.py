@@ -14,7 +14,7 @@ default_dag_args = {
 
 def validate_exec_date_function(connid, holidayTask, businessTask):
     mysql_hook: MySqlHook = MySqlHook(mysql_conn_id=connid)
-    returned = mysql_hook.get_records(sql=query "SELECT count(date) FROM holiday where date=Date(now())")
+    returned = mysql_hook.get_records(sql="SELECT count(date) FROM holiday where date=Date(now())")
     countReturned = int(re.sub("[^0-9]", "", str(returned[0])))
     
     print(countReturned)
